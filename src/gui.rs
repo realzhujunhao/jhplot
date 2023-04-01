@@ -1,6 +1,7 @@
 use iced::widget::{column, row, svg};
 use iced::{executor, Application, Command, Element, Theme};
 use crate::view::{line_scroll, config_row};
+use std::path::PathBuf;
 
 use crate::plot::generate_chart;
 
@@ -215,7 +216,9 @@ impl Application for States {
             }
             Message::Generate => {
                 generate_chart(self).unwrap();
-                std::fs::write(format!("{}.svg", &self.filename), &self.svg_bytes).unwrap();
+                let mut cur_exe: PathBuf = std::env::current_exe().unwrap().parent().unwrap().into();
+                cur_exe.push(format!("{}.svg", &self.filename));
+                std::fs::write(cur_exe, &self.svg_bytes).unwrap();
             }
         }
         Command::none()
