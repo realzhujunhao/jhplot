@@ -5,7 +5,6 @@ use crate::{
 use plotters::prelude::*;
 
 pub fn generate_chart<'a>(states: &mut States) -> Result<(), Box<dyn std::error::Error>> {
-    println!("trig");
     let root = SVGBackend::with_string(&mut states.svg_bytes, (640, 480))
         .into_drawing_area()
         .margin(1, 1, 1, 1);

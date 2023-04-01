@@ -215,7 +215,7 @@ impl Application for States {
             }
             Message::Generate => {
                 generate_chart(self).unwrap();
-                std::fs::write("test.svg", &self.svg_bytes).unwrap();
+                std::fs::write(format!("{}.svg", &self.filename), &self.svg_bytes).unwrap();
             }
         }
         Command::none()

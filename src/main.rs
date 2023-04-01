@@ -9,11 +9,6 @@ mod adapt;
 fn main() -> iced::Result {
     const ICON_BYTES: &'static [u8] = include_bytes!("image/profile.png");
     let profile_icon = window::icon::Icon::from_file_data(ICON_BYTES, Some(ImageFormat::Png));
-    if let Err(_) = profile_icon {
-        println!("wrong");
-    } else {
-        println!("{:?}", ICON_BYTES);
-    }
     let setting: iced::Settings<()> = Settings {
         window: window::Settings {
             size: (1400, 800),
